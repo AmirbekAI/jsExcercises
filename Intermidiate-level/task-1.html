@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sort an Array</title>
+</head>
+<body>
+<h3>Sort an Array of Numbers</h3>
+<input type="text" id="arrayInput" placeholder="Enter numbers separated by commas">
+<button onclick="sortArray()">Sort Array</button>
+<p id="result"></p>
+
+<script>
+  function sortArray() {
+    const array = document.getElementById('arrayInput').value.split(',').map(Number);
+
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array.length - i - 1; j++) {
+        if (array[j] > array[j + 1]) {
+          [array[j], array[j + 1]] = [array[j + 1], array[j]];
+        }
+      }
+    }
+    document.getElementById('result').innerText = `Sorted Array: ${array}`;
+  }
+</script>
+</body>
+</html>

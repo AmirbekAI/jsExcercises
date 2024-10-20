@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check for Anagram</title>
+</head>
+<body>
+<h3>Check for Anagram</h3>
+<input type="text" id="string1" placeholder="Enter first string">
+<input type="text" id="string2" placeholder="Enter second string">
+<button onclick="checkAnagram()">Check Anagram</button>
+<p id="result"></p>
+
+<script>
+    function checkAnagram() {
+        const str1 = document.getElementById('string1').value.toLowerCase().replace(/\s+/g, '');
+        const str2 = document.getElementById('string2').value.toLowerCase().replace(/\s+/g, '');
+
+        const sortedStr1 = str1.split('').sort().join('');
+        const sortedStr2 = str2.split('').sort().join('');
+
+        document.getElementById('result').innerText = (sortedStr1 === sortedStr2) ? 'Anagram' : 'Not an Anagram';
+    }
+</script>
+</body>
+</html>

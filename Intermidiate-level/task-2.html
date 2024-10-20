@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Email Format</title>
+</head>
+<body>
+<h3>Validate Email Format</h3>
+<input type="text" id="emailInput" placeholder="Enter email">
+<button onclick="validateEmail()">Validate</button>
+<p id="result"></p>
+
+<script>
+    function validateEmail() {
+        const email = document.getElementById('emailInput').value;
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isValid = regex.test(email);
+        document.getElementById('result').innerText = isValid ? 'Valid Email' : 'Invalid Email';
+    }
+</script>
+</body>
+</html>

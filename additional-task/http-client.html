@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTTP Client</title>
+</head>
+<body>
+<h3>Basic HTTP Client</h3>
+<button onclick="sendGetRequest()">GET Request</button>
+<button onclick="sendPostRequest()">POST Request</button>
+<button onclick="sendPutRequest()">PUT Request</button>
+<button onclick="sendDeleteRequest()">DELETE Request</button>
+<p id="result"></p>
+
+<script>
+    const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+
+    function sendGetRequest() {
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = JSON.stringify(data.slice(0, 2), null, 2);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function sendPostRequest() {
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: 'foo', body: 'bar', userId: 1 })
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function sendPutRequest() {
+        fetch(`${apiUrl}/1`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: 1, title: 'updated', body: 'updated content', userId: 1 })
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function sendDeleteRequest() {
+        fetch(`${apiUrl}/1`, {
+            method: 'DELETE'
+        })
+            .then(() => {
+                document.getElementById('result').innerText = 'Deleted successfully';
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+</body>
+</html>

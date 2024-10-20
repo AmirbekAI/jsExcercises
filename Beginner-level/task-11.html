@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sum of Array Elements</title>
+</head>
+<body>
+<h3>Sum of Array Elements</h3>
+<input type="text" id="arrayInput" placeholder="Enter numbers separated by commas">
+<button onclick="sumArray()">Calculate Sum</button>
+<p id="result"></p>
+
+<script>
+  function sumArray() {
+    const numbers = document.getElementById('arrayInput').value.split(',').map(Number);
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
+    document.getElementById('result').innerText = `Sum: ${sum}`;
+  }
+</script>
+</body>
+</html>

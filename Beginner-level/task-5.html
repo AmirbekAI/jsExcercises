@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Largest Number</title>
+</head>
+<body>
+<h3>Find the Largest Number</h3>
+<input type="text" id="numbers" placeholder="Enter numbers separated by commas">
+<button onclick="findLargest()">Find Largest</button>
+<p id="result"></p>
+
+<script>
+  function findLargest() {
+    const numbers = document.getElementById('numbers').value.split(',').map(Number);
+    const largest = Math.max(...numbers);
+    document.getElementById('result').innerText = `Largest: ${largest}`;
+  }
+</script>
+</body>
+</html>

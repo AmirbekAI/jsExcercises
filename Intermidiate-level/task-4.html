@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Word Occurrences</title>
+</head>
+<body>
+<h3>Count Word Occurrences</h3>
+<input type="text" id="textInput" placeholder="Enter a sentence">
+<button onclick="countWords()">Count Words</button>
+<p id="result"></p>
+
+<script>
+    function countWords() {
+        const text = document.getElementById('textInput').value.toLowerCase();
+        const words = text.split(/\s+/);
+        const wordCount = {};
+
+        words.forEach(word => {
+            wordCount[word] = (wordCount[word] || 0) + 1;
+        });
+
+        document.getElementById('result').innerText = JSON.stringify(wordCount, null, 2);
+    }
+</script>
+</body>
+</html>
